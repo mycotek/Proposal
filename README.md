@@ -1,4 +1,4 @@
-git# Overview
+# Overview
 
 The scripts to be written for the process are:
 
