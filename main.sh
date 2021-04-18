@@ -1,17 +1,25 @@
 #!/bin/bash
 
 the_input="$1"
-fasta_name=$(basename "$the_input")
-
-echo "Starting workflow to create a tree showing relationships to $fasta_name"
 
 # run setup
 ./setup.sh
 
-# do blast 
-./doBlast.sh $the_input   # passing input fasta to blast
+#retrieve a file from ncbi by quering with an organism name
+name="${the_input// /_}"
+outputFastaName="${name}.fasta"
+echo "Output name is $outputFastaName"
+python3 getFasta.py "$the_input" "$outputFastaName"
+outputFastaPath="pullFiles/${outputFastaName}"
 
-# make tree
-./doTree.sh
+# does the fasta exist? If not, print no search results and quit
+# otherwise, blast it
 
-echo "Complete"
+if [ -e "$outputFastaPath" ]; then 
+  # do blast 
+  ./doBlast.sh "$outputFastaPath"   # passing input fasta to blast
+  # sbatch doBlast.sh "$outputFastaPath"
+  echo "Complete" 
+else
+  echo "No fasta retreived for $the_input"
+fi
