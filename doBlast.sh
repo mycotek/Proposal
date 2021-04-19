@@ -26,7 +26,7 @@ if [ "$blastingFileExtension" = "fasta" ] || [ "$blastingFileExtension" = "fna" 
   echo "Blasting $blasting"
   outputs="pullFiles/${blastingFileNameOnly}"
   mkdir -p "$outputs"
-  db2blast.py -q "$blasting" -b blastn -e 2 --cpu 10 -o "$outputs" 
+  db2blast.py --query "$blasting" -b blastn -e 2 --cpu 10 -o "$outputs" 
   echo "Blast completed"
 
   # get path to where fastas were output to
@@ -37,9 +37,6 @@ if [ "$blastingFileExtension" = "fasta" ] || [ "$blastingFileExtension" = "fna" 
   # report number of fastas retrieved
   fasta_count=$(ls "$fastas_directory" | wc -l)
   fileName=$(basename "$blasting")
-
-  # delete reports that are 0 bytes?
-  find "$reports_directory" -size  0 -delete
 
   echo "Blast output in $fastas_directory"
   echo "Retrieved $fasta_count fastas for the input file $fileName"
