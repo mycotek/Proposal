@@ -9,10 +9,9 @@ downloadName = sys.argv[2]
 
 Entrez.email = "nomiotek@osu.edu"
 search_handle = Entrez.esearch(
-                  db = "nuccore",
-                  term = (inputOrganism + "[Organism]"),
-                  retmax = 20
-                  )
+db = "nuccore",
+term = (inputOrganism + "[Organism]"),
+retmax = 20)
 search_results = Entrez.read(search_handle)
 search_handle.close()
 # print(search_results)
