@@ -8,3 +8,8 @@ The scripts to be written for the process are:
 5. A script that runs all the other scripts (main.sh)
 
 More detail on the scripts can be found in project_documentation.md
+
+# Work in progress 
+
+* The overall process does not select for specific kinds of genes. It was mostly to gain familiarity with the general use of the tools. In the future, the search would be able to look for particular gene regions.
+* The output tree is also not cleaned up. This will have to happen for a future version of this workflow.
