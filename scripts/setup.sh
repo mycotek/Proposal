@@ -14,5 +14,5 @@ fi
 # mycodb_path=$(mycodb)  # put mycodb path into its own variable (command currently not working)
 # echo "Mycodb path is $mycodb_path"
 
-mkdir -p pullFiles   # directory for downloaded files
-mkdir -p outputTrees # directory for the created phylogenetic trees
+mkdir -p "pullFiles"   # directory for downloaded files
+mkdir -p "outputTrees" # directory for the created phylogenetic trees
